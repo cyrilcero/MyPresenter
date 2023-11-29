@@ -7,6 +7,7 @@ import { MainPage } from "./pages";
 
 import "./index.css";
 import "react-toastify/dist/ReactToastify.css";
+import DropZone from "./pages/DropZone/DropZone";
 
 const routes = createBrowserRouter([
   {
@@ -16,6 +17,10 @@ const routes = createBrowserRouter([
   {
     path: "/main",
     element: <MainPage />,
+  },
+  {
+    path: "/drop",
+    element: <DropZone />,
   },
 ]);
 
