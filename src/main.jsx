@@ -9,18 +9,17 @@ import "./index.css";
 import "react-toastify/dist/ReactToastify.css";
 import DropZone from "./pages/DropZone/DropZone";
 
+import { createAppState } from "./data/state.js";
+const message = createAppState();
+
 const routes = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <App message={message} />,
   },
   {
     path: "/main",
-    element: <MainPage />,
-  },
-  {
-    path: "/drop",
-    element: <DropZone />,
+    element: <MainPage message={message} />,
   },
 ]);
 
