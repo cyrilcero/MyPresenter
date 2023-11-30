@@ -7,10 +7,10 @@ import { MainPage } from "./pages";
 
 import "./index.css";
 import "react-toastify/dist/ReactToastify.css";
-import DropZone from "./pages/DropZone/DropZone";
 
-import { createAppState } from "./data/state.js";
-const message = createAppState();
+import { signal } from "@preact/signals-react";
+
+const message = signal("testing");
 
 const routes = createBrowserRouter([
   {

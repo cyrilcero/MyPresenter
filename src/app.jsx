@@ -1,14 +1,15 @@
-import { useState } from "react";
-import { signal, computed } from "@preact/signals-react";
+export function App({ message }) {
+  function updateMessage() {
+    message.value = "asdkhjfgasdf";
+  }
 
-export function App(message) {
   return (
     <>
       <h1 className="text-3xl text-red-400">TESTING</h1>
       <h1>SIGNALS TESTING</h1>
       <button
         className="w-24 bg-blue-400 h-8 rounded-lg"
-        onClick={() => computed(message.value + 1)}
+        onClick={() => updateMessage}
       >
         Click Me!
       </button>
