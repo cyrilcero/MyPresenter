@@ -29,10 +29,16 @@ export function App() {
         New Tab
       </button>
 
-      <form action="">
+      <form
+        action=""
+        onSubmit={(e) => {
+          e.preventDefault();
+          newMessage.value = e.target.value;
+        }}
+      >
         <input
           type="text"
-          value={message.value}
+          value={newMessage}
           onChange={(e) => (message.value = e.target.value)}
         />
         <button type="submit">Change Message</button>
