@@ -7,19 +7,26 @@ import { MainPage } from "./pages";
 
 import "./index.css";
 import "react-toastify/dist/ReactToastify.css";
+import state from "./state.js";
+import { createContext } from "react";
 
-import { signal } from "@preact/signals-react";
-
-const message = signal("testing");
-
+export const AppState = createContext();
 const routes = createBrowserRouter([
   {
     path: "/",
-    element: <App message={message} />,
+    element: (
+      <AppState.Provider value={state}>
+        <App />,
+      </AppState.Provider>
+    ),
   },
   {
     path: "/main",
-    element: <MainPage message={message} />,
+    element: (
+      <AppState.Provider value={state}>
+        <MainPage />,
+      </AppState.Provider>
+    ),
   },
 ]);
 

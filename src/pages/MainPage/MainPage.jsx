@@ -1,11 +1,14 @@
 import { effect } from "@preact/signals-react";
-import { setInterval } from "timers/promises";
+import { message } from "../../app";
+import { useContext } from "react";
+import { AppState } from "../../main";
 
-export function MainPage({ message }) {
-  setInterval(() => {
-    message.value = Math.random();
-  }, 500);
-
+export function MainPage() {
+  // setInterval(() => {
+  //   message.value = Math.random();
+  // }, 500);
+  const { message, newMessage } = useContext(AppState);
+  console.log(message.value);
   return (
     <>
       <section className="flex flex-col justify-center items-center w-full h-screen">
