@@ -1,18 +1,48 @@
-import { signal } from "@preact/signals";
+import { signal } from "@preact/signals-react";
+import { useContext } from "react";
+import { AppState } from "./main";
+export const message = signal("");
 
 export function App() {
-  const test = signal("testing");
-  const num = signal(0);
+  const { message, newMessage } = useContext(AppState);
+  function updateMessage() {
+    message.value = "Cyril Cero";
+  }
+
   return (
     <>
-      <h1 className="text-3xl text-red-400">{test}</h1>
-      <h1 className="font-bold">{num}</h1>
+      <h1 className="text-3xl text-red-400">TESTING</h1>
+      <h1>SIGNALS TESTING</h1>
       <button
-        className="w-24 bg-green-400 h-8 rounded-lg"
-        onClick={() => num.value++}
+        className="w-24 bg-blue-400 h-8 rounded-lg"
+        onClick={() => updateMessage()}
       >
         Click Me!
       </button>
+      <h1>{message}</h1>
+      <button
+        className="w-24 bg-red-400 h-8 rounded-lg"
+        onClick={() => {
+          window.open("/main", "display", "fullscreen = 1");
+        }}
+      >
+        New Tab
+      </button>
+
+      <form
+        action=""
+        onSubmit={(e) => {
+          e.preventDefault();
+          newMessage.value = e.target.value;
+        }}
+      >
+        <input
+          type="text"
+          value={newMessage}
+          onChange={(e) => (message.value = e.target.value)}
+        />
+        <button type="submit">Change Message</button>
+      </form>
     </>
   );
 }
